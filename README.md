@@ -6,6 +6,7 @@ Userscript for OIers.
 
 ```js
 git clone https://github.com/memset0/oi-helper.git && cd oi-helper
+npm install
 npm run build
 ```
 
