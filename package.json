@@ -1,0 +1,32 @@
+{
+  "name": "oi-helper",
+  "version": "0.1.0",
+  "description": "memset0 写的 OI 小助手~",
+  "scripts": {
+    "build": "webpack && node pack.js"
+  },
+  "author": "memset0",
+  "license": "GNU GPL v3",
+  "nodemonConfig": {
+    "watch": [
+      "src/**"
+    ],
+    "ext": "js,ts,css,less",
+    "exec": "npm run build"
+  },
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "css-loader": "^4.2.1",
+    "less": "^3.12.2",
+    "less-loader": "^6.2.0",
+    "lodash": "^4.17.19",
+    "nodemon": "^2.0.4",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "yaml": "^1.10.0"
+  },
+  "devDependencies": {
+    "babel-plugin-syntax-dynamic-import": "^6.18.0"
+  }
+}

@@ -1,0 +1,23 @@
+@import '../../style/global.less';
+
+@navbar-height: 64px;
+
+.navbar {
+	height: @navbar-height;
+	.oi-shadow-8();
+
+	.navbar-header a.navbar-brand {
+		height: @navbar-height - 20px !important;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+
+	.navbar-collapse .nav li a {
+		height: @navbar-height  !important;
+		line-height: @navbar-height - 30px !important
+	}
+}
+
+#main-container {
+	padding-top: @navbar-height + 16px;
+}

@@ -1,0 +1,107 @@
+.table {
+	.oi-shadow-2();
+	background: white;
+	font-size: 13px;
+	line-height: 20px;
+	border-spacing: 0px !important;
+
+	td,
+	tr,
+	th {
+		.oi-clean-border();
+	}
+
+	th {
+		padding: 10px 4px !important;
+	}
+
+	td {
+		padding: 6px 4px !important;
+	}
+
+	tr th:first-child,
+	tr td:first-child {
+		padding-left: 6px !important;
+	}
+
+	tr th:last-child,
+	tr td:last-child {
+		padding-right: 6px !important;
+	}
+}
+
+#contest-problems {
+	th {
+		padding-top: 16px !important;
+		padding-bottom: 16px !important;
+	}
+
+	td {
+		padding-top: 8px !important;
+		padding-bottom: 8px !important;
+	}
+}
+
+#contest-rank-table {
+	.oi-clean-border();
+	.oi-shadow-2();
+	background: white;
+	font-size: 13px;
+	line-height: 20px;
+	width: 100% !important;
+	overflow: scroll;
+
+	th.prob,
+	td.prob {
+		width: auto !important;
+		min-width: 80px !important;
+
+		div {
+			width: auto !important;
+			min-width: 80px !important;
+		}
+	}
+}
+
+#listUser_wrapper,
+#listStatus_wrapper,
+#listContest_wrapper,
+#listProblem_wrapper,
+#listComment_wrapper,
+#contest_status {
+	&>div:nth-child(1) {
+		height: 36px;
+	}
+
+	#buttonContainer,
+	#buttonContainer_r {
+		.oi-clean-padding();
+		.oi-clean-margin();
+		.oi-button-group();
+		line-height: inherit;
+
+		.btn {
+			.oi-button-group .oi-button();
+		}
+	}
+
+	#buttonContainer {
+		margin-left: 48px !important;
+	}
+
+	#listUser,
+	#listStatus,
+	#listContest,
+	#listProblem,
+	#listComment {
+		margin-top: 16px !important;
+	}
+}
+
+
+#listContest th,
+#listContest td {
+	&.contestants {
+		width: 40px !important;
+	}
+}

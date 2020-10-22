@@ -1,0 +1,28 @@
+notes:
+  - "    这个文件是打包后的代码，源代码在 repo 里 qwq~"
+  - "    Github Repo => https://github.com/memset0/oi-helper"
+domain:
+  - www.luogu.org
+  - www.luogu.com.cn
+  - loj.ac
+  - uoj.ac
+  - vjudge.net
+  - cn.vjudge.net
+  - szkopul.edu.pl
+  - codeforces.com
+  - codeforces.ml
+  - codeforc.es
+  - atcoder.jp
+  - ioihw20.duck-ac.cn
+tampermonkey:
+  namespace: oi-helper
+  require: []
+  resource: []
+  grant:
+    - unsafeWindow
+    - GM.setValue
+    - GM.getValue
+    - GM.listValue
+    - GM.deleteValue
+    - GM_addStyle
+    - GM_getResourceText
