@@ -1,7 +1,7 @@
 const path = require('path')
 
-module.exports = {
-  mode: 'development',
+module.exports = (env) => ({
+  mode: env,
   entry: {
     app: './src/index.js'
   },
@@ -28,4 +28,4 @@ module.exports = {
       },
     ],
   },
-}
+});

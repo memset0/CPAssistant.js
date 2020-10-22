@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "description": "memset0 写的 OI 小助手~",
   "scripts": {
-    "build": "webpack && node pack.js"
+    "test": "webpack --env development && node pack.js",
+    "build": "webpack --env production && node pack.js",
+    "dev": "webpack-dev-server --env development"
   },
   "author": "memset0",
   "license": "GNU GPL v3",
@@ -12,9 +14,12 @@
       "src/**"
     ],
     "ext": "js,ts,css,less",
-    "exec": "npm run build"
+    "exec": "npm run test"
   },
   "dependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-transform-runtime": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
     "babel-core": "^6.26.3",
     "css-loader": "^4.2.1",
     "less": "^3.12.2",
@@ -24,6 +29,7 @@
     "style-loader": "^1.2.1",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
     "yaml": "^1.10.0"
   },
   "devDependencies": {
