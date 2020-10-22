@@ -4,6 +4,10 @@ Userscript for OIers.
 
 ### Usage
 
+可以从 [Github Actions](https://github.com/memset0/oi-helper/actions) 上下载自动打包的版本。
+
+也可以手动打包：
+
 ```js
 git clone https://github.com/memset0/oi-helper.git && cd oi-helper
 npm install
