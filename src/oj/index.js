@@ -37,7 +37,12 @@ const CONFIG = {
 		match: [
 			'atcoder.jp',
 		]
-	}
+	},
+	'ioihw20': {
+		match: [
+			'ioihw20.duck-ac.cn'
+		]
+	},
 }
 
 const OJ = {

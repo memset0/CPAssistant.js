@@ -10,3 +10,7 @@ npm run build
 ```
 
 将 `./dist/userscript.js` 文件复制到 TamperMonkey 即可使用。
+
+### Hint
+
+* 本项目包含 `ioihw20-helper`，请勿同时启用。
