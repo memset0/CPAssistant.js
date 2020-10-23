@@ -1,4 +1,4 @@
-import css from './style/index.less';
+const { css } = require('./style/index.less');
 
 const utils = require('./utils');
 

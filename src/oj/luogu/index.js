@@ -1,1 +1,1 @@
-import css from './style.less';
+const { css } = require('./style.less');
