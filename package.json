@@ -5,7 +5,7 @@
   "scripts": {
     "test": "webpack --env development && node pack.js",
     "build": "webpack --env production && node pack.js",
-    "dev": "webpack-dev-server --env development"
+    "dev": "webpack --env development --watch --port 4289"
   },
   "author": "memset0",
   "license": "GNU GPL v3",
@@ -29,7 +29,6 @@
     "style-loader": "^1.2.1",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0",
     "yaml": "^1.10.0"
   },
   "devDependencies": {
