@@ -42,15 +42,17 @@ async function translate() {
 				return { id, hash };
 			}
 
-			$element.children(children_selector)
+			$element.find(children_selector)
 				.each((index, element) => {
 					let $element = $(element);
+					$element.find('script, span.MathJax_Preview').remove();
 					let content = $element.html();
 					$element.children('*')
 						.each((index, element) => {
 							let html = element.outerHTML;
 							let { id } = queryHTML(html);
 							content = content.replace(html, `{${id}}`);
+							// console.log(id, html.slice(0, 30));
 						});
 					console.log(content);
 					content_list.push(content);
@@ -59,26 +61,27 @@ async function translate() {
 			$element.children(children_selector)
 				.each((index, element) => {
 					let $element = $(element);
-					$element.children('.tex-font-style-bf')
-						.each((index, element) => {
-							source_list.push(element.outerHTML);
-							content_list.push(element.innerHTML);
-						});
+					// $element.children('.tex-font-style-bf')
+					// 	.each((index, element) => {
+					// 		source_list.push(element.outerHTML);
+					// 		content_list.push(element.innerHTML);
+					// 	});
 				});
 
 			let spliter = randomInt();
 			let source_content = content_list.join(`\n\n{{${spliter}}}\n\n`);
 			// console.log(source_content);
-			let target_content = await utils.translate(source_content);
+
+			let target_content = await utils.translate(source_content, true);
 			// console.log(target_content);
 			for (let hash in transform_groups) {
 				let { id, html } = transform_groups[hash];
-				target_content = target_content.replace(RegExp(`\\{\\s*${id}\\s*\\}`, 'g'), html);
+				target_content = target_content.replace(RegExp(`\\{\\s*${id}\\s*\\}`, 'g'), ' ' + html + ' ');
 				// console.log(id, html.slice(0, 30));
 			}
 			content_list = target_content.split(RegExp(`\\{\\{\\s*${spliter}\\s*\\}\\}`));
 
-			$element.children(children_selector)
+			$element.find(children_selector)
 				.each((index, element) => {
 					let $element = $(element);
 					let content = content_list[index];

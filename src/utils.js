@@ -21,10 +21,18 @@ const utils = {
 	},
 
 	async translate(content, debug_mode = false) {
-		let encoded = encodeURIComponent(content);
 		// 自建 API，基于 Google Translate，请勿滥用
-		let url = `https://translate.memset0.cn/?text=${encoded}&to=zh-cn`;
-		let response = await axios.get(url);
+		const api_url = `https://translate.memset0.cn`;
+
+		// let response = await axios.post(api_url, {
+		// 	text: content,
+		// 	to: 'zh-cn'
+		// });
+		let response = await axios.get(api_url + 
+			"?text=" + encodeURIComponent(content) + 
+			'&to=' + 'zh-cn'
+		);
+
 		if (debug_mode) {
 			console.log(response)
 		}
