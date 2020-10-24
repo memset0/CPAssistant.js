@@ -37,3 +37,11 @@ npm run build
 ### Hint
 
 * 本项目包含 `ioihw20-helper`，请勿同时启用。
+
+### Demo
+
+1. Codeforces 题面翻译，原题为 438E The Child and Binary Tree 和 1349F2 Slime and Sequences (Hard Version).（为展示效果，手工截去了样例部分）
+
+![438E](https://i.loli.net/2020/10/24/MfSvzbgay15xhtu.png)
+
+![1349F2](https://i.loli.net/2020/10/24/Bh9sAE8nUkbdST5.png)
