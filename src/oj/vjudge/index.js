@@ -28,6 +28,9 @@ if (location.pathname == '/group') {
 	$('#explore-groups>.row>.col-md-12>hr:first-child').remove();
 }
 
+// feat: 题单生成器
+require('./problemlist-generater.js');
+
 // fix: `body > .container` 占位
 if ($('body > .container, body > .container-fluid').css('margin-top') == '30px') {
 	$('body > .container, body > .container-fluid').addClass('_oi_modified_container');

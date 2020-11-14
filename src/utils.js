@@ -1,4 +1,5 @@
 const axios = require('axios');
+const assert = require('assert');
 
 const utils = {
 	// 控制台调试语句
@@ -10,6 +11,17 @@ const utils = {
 	},
 	error: function () {
 		console.error('[oi-helper]', ...arguments);
+	},
+
+	register: function (dir, value) {
+		unsafeWindow.mem = unsafeWindow.mem || {};
+		let current = unsafeWindow.mem;
+		let path = dir.split('.');
+		for (let index = 0; index + 1 < path.length; index++) {
+			current[path[index]] = current[path[index]]  || {};
+			current = current[path[index]];
+		}
+		current[path[path.length - 1]] = value;
 	},
 
 	// 在新标签页打开
@@ -28,8 +40,8 @@ const utils = {
 		// 	text: content,
 		// 	to: 'zh-cn'
 		// });
-		let response = await axios.get(api_url + 
-			"?text=" + encodeURIComponent(content) + 
+		let response = await axios.get(api_url +
+			"?text=" + encodeURIComponent(content) +
 			'&to=' + 'zh-cn'
 		);
 
@@ -37,7 +49,7 @@ const utils = {
 			console.log(response)
 		}
 		return response.data.text;
-	}
+	},
 };
 
 module.exports = utils;
