@@ -43,12 +43,19 @@ const config = {
 }
 
 module.exports = (env) => {
+  const is_defined = (key) => {
+    if (typeof env === 'array') {
+      return env.includes(key);
+    } else {
+      return !!env[key];
+    }
+  };
   let rsp = merge(
     config.public,
-    env.includes('production') ? config.production : config.development
+    is_defined('production') ? config.production : config.development
   );
   console.log(rsp);
-  if (env.includes('analyz')) {
+  if (is_defined('analyz')) {
     rsp.plugins.push(new BundleAnalyzerPlugin());
   }
   return rsp;
