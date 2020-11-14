@@ -2,8 +2,13 @@
 
 @navbar-height: 64px;
 
+html, body, table.table {
+	.oi-default-font();
+}
+
 body {
-	background: #EBEBEB;
+	margin: 0;
+	background: #EFEFEF !important;
 
 	&>.container,
 	&>.container-fluid {
@@ -133,6 +138,7 @@ body {
 @import './module/dialog.less';
 
 @import './module/group.less';
+@import './module/article.less';
 @import './module/problem.less';
 @import './module/contest.less';
 @import './module/discuss.less';
