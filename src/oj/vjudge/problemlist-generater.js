@@ -6,6 +6,7 @@ async function generate(problem_list) {
 		let source = problem_list;
 		problem_list = [];
 		for (let plain of source.split(',')) {
+			console.log(plain);
 			let oj = plain.split(':')[0];
 			let part = plain.split(':')[1];
 			if (~part.indexOf('-')) {
@@ -15,14 +16,14 @@ async function generate(problem_list) {
 					problem_list.push({ oj, id: index });
 				}
 			} else {
-				problem_list.push({ oj, id: parseInt(part) });
+				problem_list.push({ oj, id: part });
 			}
 		}
 	}
 
 	problem_list = await Promise.all(problem_list.map(problem => spider.getProblemInfo(problem.oj, problem.id)));
 	const content = problem_list.map(data => {
-		return `| [problem:${data.oj}-${data.id}] | ${data.title} | ${data.hidden_id} | ${data.time_limit} | ${data.memory_limit} |`
+		return `| [problem:${data.oj}-${data.id}] | [${data.title}](/problem/${data.oj}-${data.id}/origin) | ${data.hidden_id} | ${data.time_limit} | ${data.memory_limit} |`
 	});
 
 	const header = '| Problem | Title | ID | Time Limit | Memory Limit |\n' +

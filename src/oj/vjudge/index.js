@@ -40,7 +40,8 @@ if ($('body > .container, body > .container-fluid').css('margin-top') == '30px')
 $('.navbar .navbar-brand').text('Virtual Judge');
 
 // fix: codeforces 等 OJ 会屏蔽外链跳转
-$('#prob-title span a').attr('rel', 'noreferrer');
+$('#prob-title a, a#prob-title').attr('rel', 'noreferrer');
+$('#problem-origin a, a#problem-origin').attr('rel', 'noreferrer');
 
 // feat: 删除题面中空白或无意义的 dd 或 dt
 $('#description-container > dd').each(function () {
