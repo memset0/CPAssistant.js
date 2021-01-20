@@ -10,7 +10,7 @@ Userscripts for OIers.
 
 也可以手动打包：
 
-```js
+```shell
 git clone https://github.com/memset0/oi-helper.git && cd oi-helper
 npm install
 npm run build
