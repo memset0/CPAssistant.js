@@ -3,46 +3,51 @@ const CONFIG = {
 		match: [
 			'www.luogu.org',
 			'www.luogu.com.cn',
-		]
+		],
 	},
 	'loj': {
 		match: [
 			'loj.ac',
-		]
+		],
 	},
 	'uoj': {
 		match: [
 			'uoj.ac',
-		]
+		],
 	},
 	'vjudge': {
 		match: [
 			'vjudge.net',
 			'cn.vjudge.net',
 			'vjudge.z180.cn',
-		]
+		],
 	},
 	'szkopul': {
 		match: [
 			'szkopul.edu.pl',
-		]
+		],
 	},
 	'codeforces': {
 		match: [
 			'codeforces.com',
 			'codeforces.ml',
 			'codeforc.es',
-		]
+		],
 	},
 	'atcoder': {
 		match: [
 			'atcoder.jp',
-		]
+		],
 	},
 	'ioihw20': {
 		match: [
-			'ioihw20.duck-ac.cn'
-		]
+			'ioihw20.duck-ac.cn',
+		],
+	},
+	'baekjoon': {
+		match: [
+			'www.acmicpc.net',
+		],
 	},
 }
 
