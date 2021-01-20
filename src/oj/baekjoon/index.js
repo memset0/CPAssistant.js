@@ -1,11 +1,16 @@
 const translate = require('./methods/translate');
 
 $(document).ready(function () {
-	console.log('on load!!');
+	const submissionResult = {
+		'맞았습니다!!': 'Accepted',
+	};
+
 	translate({
 		'.topbar .loginbar li a': { // topbar
 			설정: 'Settings',
 			로그아웃: 'Log out',
+			로그인: 'Login',
+			회원가입: 'Register',
 			'replace::코인': 'Coins',
 		},
 		'.nav.nav-pills li a': { // navbar
@@ -55,7 +60,11 @@ $(document).ready(function () {
 		},
 		'.problem-menu li a': { // problem menu
 			'replace::번': '',
-			제출: 'Submit'
+			제출: 'Submit',
+			'맞은 사람': 'Statistics (Fastest)',
+			숏코딩: 'Statistics (Shortest)',
+			'채점 현황': 'Submissions',
+			'내 제출': 'My Submissions',
 		},
 		'.submit-form label, .submit-form label input, .submit-form button': { // problem submit page
 			언어: 'Language',
@@ -66,6 +75,26 @@ $(document).ready(function () {
 			'replaceHTML::비공개': 'Private',
 			'replaceHTML::공개': 'Open',
 		},
+		'#status-table tr th': { // submit status (thead)
+			'제출 번호': 'Submission ID',
+			아이디: 'User',
+			문제: 'Problem',
+			결과: 'Result',
+			메모리: 'Memory',
+			시간: 'Time',
+			언어: 'Language',
+			'코드 길이': 'Solution Size',
+			'제출한 시간': 'Submit Time',
+		},
+		'#status-table tr td .result-text span': { // submit status (tbody)
+			...submissionResult,
+		},
+		'form.form-inline': {
+			'replaceHTML::아이디': 'User ID',
+			'replaceHTML::모든 언어': 'Language',
+			'replaceHTML::모든 결과': 'Result',
+			'replaceHTML::검색': 'Search',
+		}
 	});
 });
 
