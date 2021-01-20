@@ -50,64 +50,6 @@ body {
 	.oi-clean-radius();
 }
 
-.btn {
-	.oi-clean-border();
-	.oi-clean-radius();
-	.oi-button();
-	padding-top: 0;
-	padding-bottom: 0;
-	outline: none !important;
-}
-
-.btn-group {
-	.oi-button-group();
-
-	.btn {
-		.oi-button-group .oi-button();
-	}
-}
-
-.nav.nav-tabs {
-	.oi-clean-border();
-	// .btn-group();
-	margin-bottom: 16px;
-
-	.nav-item {
-		.oi-clean-margin();
-		margin-right: 8px !important;
-
-		.nav-link {
-			.oi-clean-border();
-			.oi-clean-margin();
-			.btn();
-			color: rgb(2, 117, 216) !important;
-			background: white;
-
-			&.active {
-				color: white !important;
-				background: rgb(2, 117, 216) !important;
-			}
-		}
-	}
-}
-
-.pagination {
-	.oi-clean-margin();
-	.oi-clean-border();
-	.oi-clean-radius();
-	.oi-clean-link-underline();
-	.oi-shadow-2();
-	height: 36px;
-
-	.page-link {
-		.oi-clean-margin();
-		.oi-clean-border();
-		.oi-clean-radius();
-		height: 36px;
-		outline: none !important;
-	}
-}
-
 .list-group {
 	.oi-clean-border();
 	.oi-clean-radius();
@@ -135,8 +77,10 @@ body {
 }
 
 @import './module/table.less';
+@import './module/button.less';
 @import './module/dialog.less';
 
+@import './module/navbar.less';
 @import './module/group.less';
 @import './module/article.less';
 @import './module/problem.less';

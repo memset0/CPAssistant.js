@@ -19,6 +19,7 @@ const CONFIG = {
 		match: [
 			'vjudge.net',
 			'cn.vjudge.net',
+			'vjudge.z180.cn',
 		]
 	},
 	'szkopul': {

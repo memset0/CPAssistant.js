@@ -1,8 +1,8 @@
 .table {
 	.oi-shadow-2();
 	background: white;
-	font-size: 13px;
-	line-height: 20px;
+	font-size: 13.5px !important;
+	line-height: 20px !important;
 	border-spacing: 0px !important;
 
 	td,
@@ -12,7 +12,7 @@
 	}
 
 	th {
-		padding: 10px 4px !important;
+		padding: 8px 4px !important;
 	}
 
 	td {
@@ -52,8 +52,8 @@
 	.oi-clean-border();
 	.oi-shadow-2();
 	background: white;
-	font-size: 13px;
-	line-height: 20px;
+	font-size: 13.5px !important;
+	line-height: 20px !important;
 	width: 100% !important;
 	overflow: scroll;
 
@@ -80,19 +80,21 @@
 	}
 
 	#buttonContainer,
+	#buttonContainer_l {
+		.oi-clean-padding();
+		.oi-clean-margin();
+		margin-left: 16px !important;
+	}
+
+	#buttonContainer,
 	#buttonContainer_r {
 		.oi-clean-padding();
 		.oi-clean-margin();
-		.oi-button-group();
 		line-height: inherit;
 
 		.btn {
 			.oi-button-group .oi-button();
 		}
-	}
-
-	#buttonContainer {
-		margin-left: 48px !important;
 	}
 
 	#listUser,
