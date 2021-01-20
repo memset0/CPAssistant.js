@@ -23,11 +23,14 @@ npm run build
 * VJudge
   * 样式美化
   * 支持部分提交链接跳转到原网站
-  * 删除题面中的空白区块
+  * 自动删除题面中的空白区块
   * 其他小修小补
 
 * Codeforces
   * 题目翻译，兼容 LaTeX，基于 [Google Translate CN](https://translate.google.cn)。
+
+* [Baekjoon OJ](https://www.acmicpc.net/)
+  * 部分 UI 翻译成英文
 
 * ioihw20
   * 参见 [gh/memset0/ioihw20-helper](https://github.com/memset0/ioihw20-helper)，保持同步。
