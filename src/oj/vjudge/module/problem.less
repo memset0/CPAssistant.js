@@ -21,8 +21,8 @@
 
 #prob-properties {
 	.oi-clean-padding();
-	margin-top: 24px !important;
-	
+	margin-top: 20px !important;
+
 	.container {
 		padding: 6px !important;
 		.oi-clean-padding();
@@ -39,15 +39,24 @@
 }
 
 #prob-descriptions {
-	margin-top: 24px !important;
+	margin-top: 20px !important;
 
 	&>span:nth-child(1) {
 		display: none;
 	}
 }
 
+#prob-my-sols {
+	margin-top: 20px !important;
+
+	table {
+		margin-bottom: 0px !important;
+	}
+}
+
 #description-container {
 	dt {
+		.oi-default-font();
 		margin-left: 8px;
 		margin-top: 24px;
 		margin-bottom: 4px;
@@ -58,6 +67,7 @@
 	dd {
 		.oi-clean-radius();
 		.oi-shadow-2();
+		.oi-default-font();
 		background: white;
 		display: block;
 		padding: 16px !important;
@@ -70,4 +80,8 @@
 
 #prob-title-contest {
 	margin-bottom: 24px !important;
+}
+
+#problem-nav a.nav-link {
+	font-family: Consolas, Menlo, "Ubuntu Mono", "Courier New", Courier, "sans-serif";
 }

@@ -51,11 +51,35 @@
 #contest-rank-table {
 	.oi-clean-border();
 	.oi-shadow-2();
+	.oi-default-font();
 	background: white;
 	font-size: 13.5px !important;
 	line-height: 20px !important;
 	width: 100% !important;
 	overflow: scroll;
+	
+	tr th.prob div, tr td.prob div {
+		min-width: 20px !important;
+	}
+	
+	tr,
+	td,
+	tr.this.myself a {
+		font-weight: normal !important;
+	}
+
+	tr.this.myself a,
+	tr.this.myself td.meta {
+		color: #373a3c !important;
+	}
+
+	tr.this.myself td.meta {
+		background: #CFD8DC !important;
+	}
+
+	td.prob.fb {
+		background: #388E3C !important;
+	}
 
 	th.prob,
 	td.prob {
