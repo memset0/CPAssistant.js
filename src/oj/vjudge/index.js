@@ -31,6 +31,11 @@ if (location.pathname == '/group') {
 	$('#explore-groups>.row>.col-md-12>hr:first-child').remove();
 }
 
+// layout: /user/<username>
+if (location.pathname.startsWith('/user/')) {
+	const { css } = require('./profile.less');
+}
+
 // feat: 题单生成器
 require('./problemlist-generater.js');
 

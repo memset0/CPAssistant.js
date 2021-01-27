@@ -1,0 +1,59 @@
+@import '../../style/global.less';
+
+.container {
+	.row:nth-child(1) {
+		@height: 68px;
+		height: @height;
+		position: relative;
+
+		div:nth-child(1) {
+			.oi-shadow-2();
+			border-radius: @height / 2 !important;
+			margin-right: 6px;
+
+			img {
+				width: @height  !important;
+				height: @height  !important;
+				border-radius: @height / 2 !important;
+			}
+		}
+
+		div:nth-child(2) {
+			h3 {
+				margin-top: 6px;
+				margin-bottom: 2px;
+				font-size: 1.5rem;
+
+				a {
+					font-size: 18px;
+					color: #BDBDBD;
+				}
+			}
+
+			span {
+				font-size: 0.8rem;
+			}
+		}
+
+		div:nth-child(3) {
+			position: absolute;
+			right: 0;
+		}
+	}
+
+	.row:nth-child(3) {
+		.card-block {
+			padding: 16px !important;
+		}
+
+		margin-bottom: 20px !important;
+	}
+
+	.row:nth-child(4) {
+		.card {
+			margin-bottom: 0 !important;
+		}
+
+		margin-bottom: 20px !important;
+	}
+}
