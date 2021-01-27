@@ -80,16 +80,20 @@
 	}
 
 	#buttonContainer,
-	#buttonContainer_l {
+	#buttonContainer_l,
+	#buttonContainer_r {
 		.oi-clean-padding();
 		.oi-clean-margin();
+		.oi-shadow-2();
+	}
+
+	#buttonContainer,
+	#buttonContainer_l {
 		margin-left: 16px !important;
 	}
 
 	#buttonContainer,
 	#buttonContainer_r {
-		.oi-clean-padding();
-		.oi-clean-margin();
 		line-height: inherit;
 
 		.btn {
@@ -112,4 +116,9 @@
 	&.contestants {
 		width: 40px !important;
 	}
+}
+
+#probRecords {
+	font-size: 12px !important;
+	line-height: 19px !important;
 }

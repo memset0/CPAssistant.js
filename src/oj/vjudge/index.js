@@ -4,7 +4,10 @@ const utils = require('../../utils.js');
 
 const REMOTE_SUBMISSION_LINK_FORMAT = {
 	'LibreOJ': 'https://loj.ac/submission/<id>',
+	'UniversalOJ': 'https://uoj.ac/submission/<id>',
 	'HDU': 'http://acm.hdu.edu.cn/viewcode.php?rid=<id>',
+	'黑暗爆炸': 'https://darkbzoj.tk/submission/<id>',
+	'51Nod': 'https://www.51nod.com/Challenge/ProblemSubmitDetail.html#judgeId=<id>'
 };
 
 const DESCRIPTION_MEANINGLESS_TITLE = [
