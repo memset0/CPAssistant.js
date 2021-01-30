@@ -26,6 +26,7 @@ const config = {
           test: /\.css$/,
           use: [
             'style-loader',
+            'postcss-loader',
             'css-loader',
           ],
         },
@@ -35,6 +36,9 @@ const config = {
   },
   production: {
     mode: 'production',
+    plugins: [
+      require('cssnano'),
+    ]
   },
   development: {
     mode: 'development',
