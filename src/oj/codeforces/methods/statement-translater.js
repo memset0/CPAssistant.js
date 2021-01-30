@@ -44,17 +44,17 @@ async function translate() {
 
 			$element.find(children_selector)
 				.each((index, element) => {
-					let $element = $(element);
+					const $element = $(element);
 					$element.find('script, span.MathJax_Preview').remove();
 					let content = $element.html();
 					$element.children('*')
 						.each((index, element) => {
-							let html = element.outerHTML;
-							let { id } = queryHTML(html);
+							const html = element.outerHTML;
+							const { id } = queryHTML(html);
 							content = content.replace(html, `{${id}}`);
 							// console.log(id, html.slice(0, 30));
 						});
-					console.log(content);
+					// console.log(content);
 					content_list.push(content);
 				});
 
@@ -68,16 +68,24 @@ async function translate() {
 					// 	});
 				});
 
-			let spliter = randomInt();
-			let source_content = content_list.join(`\n\n{{${spliter}}}\n\n`);
+			const spliter = randomInt();
+			const spliter_text = `\n\n{{${spliter}}}\n\n`;
+			let source_content = [];
+			for (let content of content_list) {
+				content = content.replace(/&nbsp;/g, '');
+				if (source_content.length && source_content[source_content.length - 1].length + content.length < 1000) {
+					source_content[source_content.length - 1] += spliter_text + content;
+				} else {
+					source_content.push(content);
+				}
+			}
 			// console.log(source_content);
 
-			let target_content = await utils.translate(source_content, true);
+			let target_content = (await Promise.all(source_content.map(ctx => utils.translate(ctx, true)))).join(spliter_text);
 			// console.log(target_content);
-			for (let hash in transform_groups) {
-				let { id, html } = transform_groups[hash];
+			for (const hash in transform_groups) {
+				const { id, html } = transform_groups[hash];
 				target_content = target_content.replace(RegExp(`\\{\\s*${id}\\s*\\}`, 'g'), ' ' + html + ' ');
-				// console.log(id, html.slice(0, 30));
 			}
 			content_list = target_content.split(RegExp(`\\{\\{\\s*${spliter}\\s*\\}\\}`));
 
