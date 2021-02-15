@@ -47,11 +47,14 @@ const config = {
 }
 
 module.exports = (env) => {
+  console.log(env);
   const is_defined = (key) => {
     if (typeof env === 'array') {
       return env.includes(key);
-    } else {
+    } else if (typeof env === 'object') {
       return !!env[key];
+    } else {
+      return env == key;
     }
   };
   let rsp = merge(
