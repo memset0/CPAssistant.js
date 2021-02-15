@@ -6,9 +6,11 @@ Userscripts for OIers.
 
 ### Usage
 
-可以从 [Github Actions](https://github.com/memset0/oi-helper/actions) 上下载自动打包的版本。（关键词：Artifacts）
+本插件依赖于 TamperMonkey 运行，首先你需要安装最新版 TamperMonkey 浏览器插件或替代品。
 
-也可以手动打包：
+可以从 [Jsdelivr](https://cdn.jsdelivr.net/gh/memset0/oi-helper@dist/userscript.js) 或 [Github Actions](https://github.com/memset0/oi-helper/actions) 上下载自动构建的版本。
+
+也可以手动构建：
 
 ```shell
 git clone https://github.com/memset0/oi-helper.git && cd oi-helper
