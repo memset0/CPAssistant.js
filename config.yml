@@ -21,6 +21,8 @@ tampermonkey:
   resource: []
   match:
     - https://github.com/memset0/oi-helper
+  updateURL: https://cdn.jsdelivr.net/gh/memset0/oi-helper@dist/userscript.js
+  downloadURL: https://cdn.jsdelivr.net/gh/memset0/oi-helper@dist/userscript.js
   grant:
     - unsafeWindow
     - GM_setValue

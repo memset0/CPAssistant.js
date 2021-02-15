@@ -45,6 +45,8 @@ function mode_production(config) {
 
 function mode_development(_config) {
 	let config = JSON.parse(JSON.stringify(_config));
+	delete config.tampermonkey.updateURL;
+	delete config.tampermonkey.downloadURL;
 	config.tampermonkey.name += '[dev]';
 	config.tampermonkey.require.push('file://' + path.resolve(path.join(__dirname, './dist/bundle.js')));
 	return build(config, '');
