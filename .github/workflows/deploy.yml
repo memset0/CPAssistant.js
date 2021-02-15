@@ -10,8 +10,15 @@ jobs:
           mkdir dist
           npm install
           npm run build
-      - name: Deploy
+      - name: Deploy Artifacts
         uses: actions/upload-artifact@v1
         with:
           name: "oi-helper-${{ github.sha }}"
           path: dist/userscript.js
+      - name: Deploy Github Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: dist
+          force_orphan: true
