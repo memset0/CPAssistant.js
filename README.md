@@ -18,6 +18,8 @@ npm run build
 
 将 `./dist/userscript.js` 文件复制到 TamperMonkey 即可使用。
 
+成功安装插件后，本页的 `README.md` 文件尾部会显示配置窗口，你可以在此处对插件功能进行配置。
+
 ### Feature
 
 * VJudge

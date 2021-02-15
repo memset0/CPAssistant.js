@@ -1,3 +1,5 @@
+const config = require('../config');
+
 const CONFIG = {
 	'luogu': {
 		match: [
@@ -54,6 +56,9 @@ const CONFIG = {
 const OJ = {
 	load: function (url) {
 		Object.keys(CONFIG).forEach(oj => {
+			if (!config.query('oj.' + oj, true)) {
+				return;
+			}
 			CONFIG[oj].match.forEach((prefix) => {
 				if (url.startsWith('http://' + prefix) || url.startsWith('https://' + prefix)) {
 					require('./' + oj + '/index.js');

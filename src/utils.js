@@ -3,29 +3,38 @@ const assert = require('assert');
 
 const utils = {
 	// 控制台调试语句
-	log: function () {
+	log() {
 		console.log('[oi-helper]', ...arguments);
 	},
-	warn: function () {
+	warn() {
 		console.warn('[oi-helper]', ...arguments);
 	},
-	error: function () {
+	error() {
 		console.error('[oi-helper]', ...arguments);
 	},
 
-	register: function (dir, value) {
+	getValue(key) {
+		utils.log('getValue', key, GM_getValue(key));
+		return GM_getValue(key);
+	},
+	setValue(key, data) {
+		utils.log('setValue', key, data);
+		return GM_setValue(key, data);
+	},
+
+	register(dir, value) {
 		unsafeWindow.mem = unsafeWindow.mem || {};
 		let current = unsafeWindow.mem;
 		let path = dir.split('.');
 		for (let index = 0; index + 1 < path.length; index++) {
-			current[path[index]] = current[path[index]]  || {};
+			current[path[index]] = current[path[index]] || {};
 			current = current[path[index]];
 		}
 		current[path[path.length - 1]] = value;
 	},
 
 	// 在新标签页打开
-	openInNewTab: function (href) {
+	openInNewTab(href) {
 		let element = document.createElement('a');
 		element.setAttribute('href', encodeURI(href));
 		element.setAttribute('target', '_blank');

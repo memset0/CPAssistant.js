@@ -1,6 +1,5 @@
 notes:
-  - "    这个文件是打包后的代码，源代码在 repo 里 qwq~"
-  - "    Github Repo => https://github.com/memset0/oi-helper"
+  - "  该文件是打包后的代码，源代码请见 https://github.com/memset0/oi-helper qwq~"
 domain:
   - www.luogu.org
   - www.luogu.com.cn
@@ -20,11 +19,13 @@ tampermonkey:
   namespace: oi-helper
   require: []
   resource: []
+  match:
+    - https://github.com/memset0/oi-helper
   grant:
     - unsafeWindow
-    - GM.setValue
-    - GM.getValue
-    - GM.listValue
-    - GM.deleteValue
+    - GM_setValue
+    - GM_getValue
+    - GM_listValue
+    - GM_deleteValue
     - GM_addStyle
     - GM_getResourceText
