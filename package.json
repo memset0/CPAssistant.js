@@ -1,6 +1,6 @@
 {
   "name": "oi-helper",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "memset0 写的 OI 小助手~",
   "scripts": {
     "test": "webpack --env development && node pack.js",
@@ -9,7 +9,7 @@
     "dev": "webpack --env development --watch"
   },
   "author": "memset0",
-  "license": "GNU GPL v3",
+  "license": "GPL-3.0-only",
   "nodemonConfig": {
     "watch": [
       "src/**"
