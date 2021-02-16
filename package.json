@@ -1,6 +1,6 @@
 {
   "name": "oi-helper",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "memset0 写的 OI 小助手~",
   "scripts": {
     "test": "webpack --env development && node pack.js",
@@ -32,6 +32,7 @@
     "cssnano": "^4.1.10",
     "less": "^3.12.2",
     "less-loader": "^6.2.0",
+    "less-plugin-clean-css": "^1.5.1",
     "lodash": "^4.17.19",
     "md5": "^2.3.0",
     "nodemon": "^2.0.4",

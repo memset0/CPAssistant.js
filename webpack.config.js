@@ -1,6 +1,7 @@
 const path = require('path');
 const { merge } = require('webpack-merge');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const LessCleanCSSPlugin = require("less-plugin-clean-css");
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const config = {
@@ -19,7 +20,16 @@ const config = {
           use: [
             'style-loader',
             { loader: 'css-loader', options: { importLoaders: 1 } },
-            'less-loader',
+            {
+              loader: "less-loader", options: {
+                lessOptions: {
+                  noIeCompat: true,
+                  plugins: [
+                    new LessCleanCSSPlugin({ advanced: true }),
+                  ],
+                },
+              },
+            },
           ],
         },
         {
