@@ -1,5 +1,5 @@
-const utils = require('../../utils.js');
-const spider = require('./spider.js');
+const utils = require('../../../utils');
+const spider = require('./spider');
 
 async function generate(problem_list) {
 	if (typeof problem_list === 'string') {

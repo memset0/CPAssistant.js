@@ -1,4 +1,5 @@
-const utils = require('../../utils.js');
+const utils = require('../../../utils.js');
+
 async function getProblemInfo(oj, id) {
 	oj = String(oj);
 	id = String(id);
