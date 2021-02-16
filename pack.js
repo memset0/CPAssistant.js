@@ -4,22 +4,26 @@ const YAML = require('yaml');
 
 let config = YAML.parse(fs.readFileSync('config.yml').toString());
 let npmConfig = JSON.parse(fs.readFileSync('package.json').toString());
-['name', 'author', 'description', 'version', 'license'].forEach(key => {
-	config.tampermonkey[key] = npmConfig[key];
-});
+for (const key of ['license', 'version', 'description', 'author', 'name']) {
+	config.tampermonkey = {
+		[key]: npmConfig[key],
+		...config.tampermonkey
+	};
+}
 
 function build(_config, bundle) {
+	bundle = bundle.replace('/*! For license information please see bundle.js.LICENSE.txt */\n', '');
 	let config = JSON.parse(JSON.stringify(_config));
 	let result = ''
 	result += '// ==UserScript==\n'
 	config.tampermonkey.match = config.tampermonkey.match || [];
-	config.domain.forEach(domain => {
+	for (const domain of config.domain) {
 		config.tampermonkey.match.push('http://' + domain);
 		config.tampermonkey.match.push('https://' + domain);
 		config.tampermonkey.match.push('http://' + domain + '/*');
 		config.tampermonkey.match.push('https://' + domain + '/*');
-	});
-	Object.keys(config.tampermonkey).forEach((key) => {
+	}
+	for (const key of Object.keys(config.tampermonkey)) {
 		let val = config.tampermonkey[key];
 		if (val instanceof Array) {
 			val.forEach(val => {
@@ -28,12 +32,12 @@ function build(_config, bundle) {
 		} else {
 			result += `// @${key} ${val}\n`;
 		}
-	});
+	}
 	result += '// ==/UserScript==\n';
 	result += '// ==Notes==\n';
-	config.notes.forEach((val) => {
+	for (const val of config.notes) {
 		result += `// ${val}\n`;
-	});
+	}
 	result += '// ==/Notes==\n';
 	result += bundle;
 	return result;
