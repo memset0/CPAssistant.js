@@ -5,11 +5,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Install Dependence
+        run: npm install
       - name: Build
-        run: |
-          mkdir dist
-          npm install
-          npm run build
+        run: mkdir dist && npm run build
       - name: Deploy Artifacts
         uses: actions/upload-artifact@v1
         with:
@@ -22,3 +21,5 @@ jobs:
           publish_dir: ./dist
           publish_branch: dist
           force_orphan: true
+      - name: Reflash Jsdelivr CDN Cache
+        run: curl https://purge.jsdelivr.net/gh/memset0/oi-helper@dist/userscript.js
