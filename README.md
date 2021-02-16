@@ -8,7 +8,7 @@ Userscripts for OIers.
 
 本插件依赖于 TamperMonkey 运行，首先你需要安装最新版 TamperMonkey 浏览器插件或替代品。
 
-可以从 [Jsdelivr](https://cdn.jsdelivr.net/gh/memset0/oi-helper@dist/userscript.js) 或 [Github Actions](https://github.com/memset0/oi-helper/actions) 上下载自动构建的版本。
+可以从 OpenUserJS 网站上安装本插件：[https://openuserjs.org/scripts/memset0/oi-helper](https://openuserjs.org/scripts/memset0/oi-helper)。
 
 也可以手动构建：
 
@@ -18,7 +18,7 @@ npm install
 npm run build
 ```
 
-将 `./dist/userscript.js` 文件复制到 TamperMonkey 即可使用。
+将 `./dist/userscript.js` 文件复制到 TamperMonkey 即可。
 
 成功安装插件后，本页的 `README.md` 文件尾部会显示配置窗口，你可以在此处对插件功能进行配置。
 
