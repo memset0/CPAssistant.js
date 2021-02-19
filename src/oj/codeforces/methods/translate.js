@@ -1,5 +1,5 @@
 const md5 = require('md5');
-const utils = require('../../../utils.js');
+const utils = require('@/utils.js');
 
 const children_selector = 'p, ul>li';
 

@@ -1,4 +1,4 @@
-const utils = require('../../../utils.js');
+const utils = require('@/utils.js');
 
 const REMOTE_SUBMISSION_LINK_FORMAT = {
 	'LibreOJ': 'https://loj.ac/submission/<id>',

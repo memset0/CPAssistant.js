@@ -1,4 +1,4 @@
-const utils = require('../../../utils');
+const utils = require('@/utils');
 const spider = require('./spider');
 
 async function generate(problem_list) {

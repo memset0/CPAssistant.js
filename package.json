@@ -1,6 +1,6 @@
 {
   "name": "oi-helper",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "memset0 写的 OI 小助手~",
   "scripts": {
     "test": "webpack --env development && node pack.js",

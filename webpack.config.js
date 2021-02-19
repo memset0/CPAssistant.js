@@ -43,6 +43,11 @@ const config = {
       ],
     },
     plugins: [],
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './src'),
+      },
+    },
   },
   production: {
     mode: 'production',
