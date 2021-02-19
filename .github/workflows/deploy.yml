@@ -6,7 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install Dependence
-        uses: bahmutov/npm-install@v1
+        run: npm install
       - name: Build
         run: mkdir dist && npm run build
       - name: Deploy Artifacts
