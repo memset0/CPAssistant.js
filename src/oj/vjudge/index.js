@@ -1,7 +1,9 @@
-require('./style-loader');
-require('./modules/accepted-counter'); // 个人信息界面统计通过题数
-require('./modules/remote-submission-link'); // 远程提交链接跳转
-require('./modules/problemlist-generater'); // (命令行)题单生成器
+const app = require('@/app');
+
+app.register('vjudge-custom-style', require('./modules/custom-style'));
+app.register('vjudge-accepted-counter', require('./modules/accepted-counter'));
+app.register('vjudge-problemlist-generater', require('./modules/problemlist-generater'));
+app.register('vjudge-remote-submission-link', require('./modules/remote-submission-link'));
 
 // fix: codeforces 等 OJ 会屏蔽外链跳转
 $('#prob-title a, a#prob-title').attr('rel', 'noreferrer');

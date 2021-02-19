@@ -7,7 +7,7 @@ if (!data) data = {};
 const profile = [
 	{
 		name: 'oj',
-		description: '对于每个 OJ 配置是否启用 oi-helper 功能',
+		description: '对于每个 Online Judge 配置是否启用',
 		children: [
 			{
 				name: 'atcoder',
@@ -36,8 +36,42 @@ const profile = [
 			}, {
 				name: 'vjudge',
 				value: true,
-			}
-		]
+			},
+		],
+	}, {
+		name: 'module',
+		description: '对于每个功能模块配置是否启用',
+		children: [
+			{
+				name: 'baekjoon-ui-translate',
+				description: 'baekjoon 部分 UI 翻译',
+				value: true,
+			},			{
+				name: 'codeforces-translator',
+				description: 'codeforces 题面/题解翻译器',
+				value: true,
+			}, {
+				name: 'codeforces-fast-submit',
+				description: 'codeforces 快速提交插件（支持在题面页面直接提交代码）',
+				value: true,
+			}, {
+				name: 'vjudge-custom-style',
+				description: 'vjudge 自定义样式',
+				value: true,
+			}, {
+				name: 'vjudge-accepted-counter',
+				description: 'vjudge 用户资料页面通过题目数分 OJ 统计',
+				value: true,
+			}, {
+				name: 'vjudge-problemlist-generater',
+				description: 'vjudge 题单生成器（命令行功能）',
+				value: true,
+			}, {
+				name: 'vjudge-remote-submission-link',
+				description: 'vjudge 提交记录添加跳转到原 OJ 提交记录页链接（仅对部分 OJ 有效）',
+				value: true,
+			},
+		],
 	}
 ];
 
@@ -69,9 +103,10 @@ const config = {
 	},
 
 	renderHTML(element) {
-		const renderTree = (element, profile, prefix) => {
+		const renderTree = (element, profile, prefix, depth) => {
 			for (const item of profile) {
 				const current = document.createElement('div');
+				current.classList.add("oi-helper-config-depth-" + depth);
 				current.innerHTML += '<h2>' + item.name + '</h2>';
 				if (item.description) {
 					current.innerHTML += '<p>' + item.description + '</p>';
@@ -80,7 +115,7 @@ const config = {
 					const children = document.createElement('div');
 					children.style['padding-left'] = '20px';
 					current.appendChild(children);
-					renderTree(children, item.children, prefix.concat([item.name]));
+					renderTree(children, item.children, prefix.concat([item.name]), depth + 1);
 				}
 				if (item.value) {
 					const path = prefix.concat([item.name]).join('.');
@@ -105,7 +140,7 @@ const config = {
 		const rootNode = document.createElement('div');
 		rootNode.id = 'oi-helper-config';
 		element.appendChild(rootNode);
-		renderTree(rootNode, profile, []);
+		renderTree(rootNode, profile, [], 0);
 	}
 }
 

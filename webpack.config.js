@@ -45,6 +45,7 @@ const config = {
     plugins: [],
     resolve: {
       alias: {
+        '@/oj$': path.resolve(__dirname, './src/oj/index.js'),
         '@': path.resolve(__dirname, './src'),
       },
     },

@@ -26,9 +26,9 @@ npm run build
 
 * VJudge
   * 样式美化
+  * 用户资料页面通过题目数分 OJ 统计
   * 支持部分提交链接跳转到原网站
   * 自动删除题面中的空白区块
-  * 其他小修小补
 
 * Codeforces
   * 快速提交，支持在题面页面直接提交代码，减少操作步骤和等待时间（fork 自 [gh/LumaKernel/cf-fast-submit](https://github.com/LumaKernel/cf-fast-submit)）
@@ -40,7 +40,7 @@ npm run build
 * ioihw20
   * 参见 [gh/memset0/ioihw20-helper](https://github.com/memset0/ioihw20-helper)，保持同步
 
-目前处于项目开发咕咕咕阶段，后期会增加配置功能自由搭配（
+更多功能请在安装插件后自行查阅配置列表。
 
 ### Hint
 
