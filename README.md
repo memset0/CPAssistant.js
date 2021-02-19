@@ -31,13 +31,14 @@ npm run build
   * 其他小修小补
 
 * Codeforces
-  * 题目翻译，兼容 LaTeX，基于 [Google Translate CN](https://translate.google.cn)。
+  * 快速提交，支持在题面页面直接提交代码，减少操作步骤和等待时间（fork 自 https://github.com/LumaKernel/cf-fast-submit）
+  * 题目翻译，兼容 LaTeX，基于 [Google Translate CN](https://translate.google.cn)
 
 * [Baekjoon OJ](https://www.acmicpc.net/)
   * 部分 UI 翻译成英文
 
 * ioihw20
-  * 参见 [gh/memset0/ioihw20-helper](https://github.com/memset0/ioihw20-helper)，保持同步。
+  * 参见 [gh/memset0/ioihw20-helper](https://github.com/memset0/ioihw20-helper)，保持同步
 
 目前处于项目开发咕咕咕阶段，后期会增加配置功能自由搭配（
 
