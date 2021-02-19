@@ -1,10 +1,9 @@
-// forked from https://github.com/LumaKernel/cf-fast-submit (ver: 2.8)
-
+const app = require('@/app');
 const utils = require('@/utils');
 
 const MODULE_NAME = 'cf-fast-submit';
 
-async function main() {
+async function main() { // forked from https://github.com/LumaKernel/cf-fast-submit (ver: 2.8)
 	const openNewWindow = false
 	const origin = location.origin
 	const pathname = location.pathname
@@ -18,7 +17,7 @@ async function main() {
 	const groupPattern = /group\/([^/]+)\/contest\/([^/]*)\/problem\/([^/]*)\/?$/
 
 	let $form, $programType, $toggleEditor, $tabSize, $selectProblem
-	let editor, submitURL, problemId,contestId, participantId
+	let editor, submitURL, problemId, contestId, participantId
 	let type // 'contest' | 'gym' | 'problemset' | 'group'
 
 	// got from submit page
@@ -356,21 +355,23 @@ async function main() {
 	}
 }
 
-if (
-	location.pathname.match(/^\/contest\/.*\/problem\/.*$/) ||
-	location.pathname.match(/^\/gym\/.*\/problem\/.*$/) ||
-	location.pathname.match(/^\/problemset\/problem\/.*$/) ||
-	location.pathname.match(/^\/group\/.*\/contest\/.*\/problem\/.*$/)
-) {
-	utils.log(`loading module \`${MODULE_NAME}\`...`);
-	main()
-		.then(() => {
-			$('.submit-form .table-form .subscription-row').remove();
-			$('.submit-form .table-form tr').filter((_, element) => { return $(element).children('.field-name').text().trim() == 'Problem:'; }).remove();
-			$('#sidebar .sidebox').filter((_, element) => { return $(element).children('.titled').text().trim() == '→ Submit?'; }).remove();
-			utils.log(`successful loaded module \`${MODULE_NAME}\``);
-		})
-		.catch((err) => {
-			utils.error(`crash on loading module \`${MODULE_NAME}\`:`, err)
-		});
-}
+module.exports = () => {
+	app.at([
+		/^\/contest\/.*\/problem\/.*$/,
+		/^\/gym\/.*\/problem\/.*$/,
+		/^\/problemset\/problem\/.*$/,
+		/^\/group\/.*\/contest\/.*\/problem\/.*$/,
+	], () => {
+		utils.log(`loading module \`${MODULE_NAME}\`...`);
+		main()
+			.then(() => {
+				$('.submit-form .table-form .subscription-row').remove();
+				$('.submit-form .table-form tr').filter((_, element) => { return $(element).children('.field-name').text().trim() == 'Problem:'; }).remove();
+				$('#sidebar .sidebox').filter((_, element) => { return $(element).children('.titled').text().trim() == '→ Submit?'; }).remove();
+				utils.log(`successful loaded module \`${MODULE_NAME}\``);
+			})
+			.catch((err) => {
+				utils.error(`crash on loading module \`${MODULE_NAME}\`:`, err)
+			});
+	});
+};

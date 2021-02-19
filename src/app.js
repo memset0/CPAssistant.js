@@ -1,24 +1,39 @@
 const config = require('@/config');
 
-function isCurrectRoute(route) {
-	const partten = new RegExp('^' + route.replace('*', '.*') + '$');
-	return !!location.pathname.match(partten);
-}
-
 let processList = [];
 
-const app = {
-	at(route, callback) {
-		if (isCurrectRoute(route)) {
-			callback();
+function isCurrectRoute(route) {
+	if (route instanceof Array) {
+		for (const childRoute of route) {
+			if (isCurrectRoute(childRoute)) {
+				return true;
+			}
 		}
-	},
+		return false;
+	} else if (route instanceof RegExp) {
+		return !!location.pathname.match(route);
+	} else if (typeof route === 'string') {
+		const partten = new RegExp('^' + route.replace('*', '.*') + '$');
+		return !!location.pathname.match(partten);
+	} else {
+		return false;
+	}
+}
+
+const app = {
 	when(route, callback) {
 		processList.push({ format: 'route', route, callback });
 	},
 	register(name, callback) {
 		processList.push({ format: 'module', name, callback });
 	},
+
+	at(route, callback) {
+		if (isCurrectRoute(route)) {
+			callback();
+		}
+	},
+	
 	load() {
 		for (const process of processList) {
 			switch (process.format) {

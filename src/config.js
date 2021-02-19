@@ -46,7 +46,7 @@ const profile = [
 				name: 'baekjoon-ui-translate',
 				description: 'baekjoon 部分 UI 翻译',
 				value: true,
-			},			{
+			}, {
 				name: 'codeforces-translator',
 				description: 'codeforces 题面/题解翻译器',
 				value: true,

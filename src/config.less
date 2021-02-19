@@ -1,7 +1,13 @@
 @import 'style/methods/shadow';
 
 #oi-helper-config {
-	.oi-shadow-4();
+	.oi-shadow-2();
+	transition: box-shadow 0.5s;
+
+	&:hover {
+		.oi-shadow-12();
+	}
+
 	padding: 20px;
 
 	h2 {

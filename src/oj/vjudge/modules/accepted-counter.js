@@ -1,5 +1,7 @@
+const app = require('@/app');
+
 module.exports = () => {
-	if (location.pathname.startsWith('/user/')) {
+	app.at('/user/*', () => {
 		$(document).on('click', '.toggle-detail', function () {
 			$("#probRecords tbody tr:not(#templ)").each(function () {
 				let oj_name = $(this).children('td').eq(0).text().trim();
@@ -14,5 +16,5 @@ module.exports = () => {
 				`);
 			});
 		});
-	}
+	});
 };
