@@ -11,16 +11,16 @@ const utils = {
 	},
 
 	getValue(key) {
-		utils.log('getValue', key, GM_getValue(key));
+		utils.log('[utils] getValue', key, GM_getValue(key));
 		return GM_getValue(key);
 	},
 	setValue(key, data) {
-		utils.log('setValue', key, data);
+		utils.log('[utils] setValue', key, data);
 		return GM_setValue(key, data);
 	},
 
 	request: {
-		async get(url, { timeout = 5000 }) {
+		async get(url, { timeout } = { timeout: 5000 }) {
 			return new Promise((resolve, reject) => {
 				const xhr = new XMLHttpRequest();
 				xhr.open("GET", url, true);
