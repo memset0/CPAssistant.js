@@ -1,4 +1,4 @@
-const utils = require('@/utils'); 
+const app = require('@/app'); 
 
 const spider = require('../methods/spider');
 
@@ -36,5 +36,5 @@ module.exports = () => {
 		return response;
 	}
 
-	utils.register('vjudge.problemlistGenerater', generate);
+	app.command('vjudge.problemlistGenerater', generate);
 };

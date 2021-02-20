@@ -1,4 +1,4 @@
-const utils = require('@/utils');
+const app = require('@/app');
 
 async function getProblemInfo(oj, id) {
 	oj = String(oj);
@@ -27,7 +27,7 @@ async function getProblemInfo(oj, id) {
 	return response;
 }
 
-utils.register('vjudge.getProblemInfo', async (oj, id) => {
+app.command('vjudge.getProblemInfo', async (oj, id) => {
 	const response = await getProblemInfo(oj, id);
 	console.log(response);
 	return response;

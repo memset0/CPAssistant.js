@@ -22,17 +22,6 @@ const utils = {
 		return GM_setValue(key, data);
 	},
 
-	register(dir, value) {
-		unsafeWindow.mem = unsafeWindow.mem || {};
-		let current = unsafeWindow.mem;
-		let path = dir.split('.');
-		for (let index = 0; index + 1 < path.length; index++) {
-			current[path[index]] = current[path[index]] || {};
-			current = current[path[index]];
-		}
-		current[path[path.length - 1]] = value;
-	},
-
 	// 在新标签页打开
 	openInNewTab(href) {
 		let element = document.createElement('a');

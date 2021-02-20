@@ -33,6 +33,16 @@ const app = {
 			callback();
 		}
 	},
+
+	command(dir, callback) {
+		const path = dir.split('.');
+		let current = unsafeWindow.mem = unsafeWindow.mem || {};
+		for (let index = 0; index + 1 < path.length; index++) {
+			current[path[index]] = current[path[index]] || {};
+			current = current[path[index]];
+		}
+		current[path[path.length - 1]] = callback;
+	},
 	
 	load() {
 		for (const process of processList) {

@@ -1,8 +1,12 @@
+const fs = require('fs');
 const path = require('path');
+const webpack = require('webpack');
 const { merge } = require('webpack-merge');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const LessCleanCSSPlugin = require("less-plugin-clean-css");
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+
+const packageJSON = JSON.parse(fs.readFileSync(path.join(__dirname, './package.json')));
 
 const config = {
   public: {
@@ -42,7 +46,11 @@ const config = {
         },
       ],
     },
-    plugins: [],
+    plugins: [
+      new webpack.DefinePlugin({
+        VERSION: JSON.stringify(packageJSON.version),
+      }),
+    ],
     resolve: {
       alias: {
         '@/oj$': path.resolve(__dirname, './src/oj/index.js'),
