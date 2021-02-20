@@ -24,8 +24,8 @@ function parseHeader(script) {
 }
 
 function versionGreater(verX, verY) {
-	const arrX = verX.split('.').map(parseInt);
-	const arrY = verY.split('.').map(parseInt);
+	const arrX = verX.split('.').map(o => parseInt(o));
+	const arrY = verY.split('.').map(o => parseInt(o));
 	for (let i = 0; i < Math.min(arrX.length, arrY.length); i++) {
 		if (arrX[i] != arrY[i]) {
 			return arrX[i] > arrY[i];
