@@ -1,6 +1,3 @@
-const axios = require('axios');
-const assert = require('assert');
-
 const utils = {
 	// 控制台调试语句
 	log() {
@@ -22,6 +19,22 @@ const utils = {
 		return GM_setValue(key, data);
 	},
 
+	request: {
+		async get(url, { timeout = 5000 }) {
+			return new Promise((resolve, reject) => {
+				const xhr = new XMLHttpRequest();
+				xhr.open("GET", url, true);
+				xhr.send();
+				xhr.onreadystatechange = () => {
+					if (xhr.readyState == 4 && xhr.status == 200) {
+						resolve(xhr.responseText);
+					}
+				};
+				setTimeout(() => { reject(new Error('Timed out')) }, timeout);
+			});
+		},
+	},
+
 	// 在新标签页打开
 	openInNewTab(href) {
 		let element = document.createElement('a');
@@ -30,20 +43,14 @@ const utils = {
 		element.click();
 	},
 
-	async translate(content, debug_mode = false) {
+	async translate(content, debug_flag = false) {
 		// 自建 API，基于 Google Translate，请勿滥用
-		const api_url = `https://translate.memset0.cn`;
-
-		// let response = await axios.post(api_url, {
-		// 	text: content,
-		// 	to: 'zh-cn'
-		// });
-		let response = await axios.get(api_url +
+		const api_root = `https://translate.memset0.cn`;
+		const response = await utils.request.get(api_root +
 			"?text=" + encodeURIComponent(content) +
 			'&to=' + 'zh-cn'
 		);
-
-		if (debug_mode) {
+		if (debug_flag) {
 			console.log(response)
 		}
 		return response.data.text;

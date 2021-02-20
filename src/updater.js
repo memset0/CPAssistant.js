@@ -3,20 +3,6 @@ const utils = require('@/utils');
 
 const checkInterval = 1000 * 60 * 60 * 24;
 
-async function fetch(url) {
-	return new Promise((resolve, reject) => {
-		const xhr = new XMLHttpRequest();
-		xhr.open("GET", url, true);
-		xhr.send();
-		xhr.onreadystatechange = () => {
-			if (xhr.readyState == 4 && xhr.status == 200) {
-				resolve(xhr.responseText);
-			}
-		};
-		setTimeout(() => {reject(new Error('Timed out'))}, 5000);
-	});
-}
-
 function parseHeader(script) {
 	const result = {};
 	const header = script.split('// ==UserScript==')[1].split('// ==/UserScript==')[0];
@@ -58,7 +44,7 @@ async function check(force = false) {
 	utils.setValue('update-check-last-time', Date.now());
 
 	const onlineScript = 'https://cdn.jsdelivr.net/gh/memset0/oi-helper@dist/userscript.js?t=' + Date.now();
-	const onlineVersion = parseHeader(await fetch(onlineScript)).version;
+	const onlineVersion = parseHeader(await utils.request.get(onlineScript)).version;
 
 	const localVersion = VERSION;
 
