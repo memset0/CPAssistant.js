@@ -1,25 +1,35 @@
-name: "Deploy to Artifacts"
-on: push
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install Dependence
+
+      - name: Install
         run: yarn
+
       - name: Build
         run: yarn build
+
       - name: Deploy Artifacts
         uses: actions/upload-artifact@v1
         with:
           name: "oi-helper-${{ github.sha }}"
-          path: dist/CPAssistant.user.js
-      - name: Deploy Github Pages
+          path: dist/CPAssistant.js
+
+      - name: Deploy Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           publish_branch: dist
           force_orphan: true
-      - name: Reflash Jsdelivr CDN Cache
-        run: curl https://purge.jsdelivr.net/gh/memset0/CPAssistant.js@dist/CPAssistant.user.js
+
+      - name: Reflash Jsdelivr Cache
+        run: curl https://purge.jsdelivr.net/gh/memset0/CPAssistant.js@dist/CPAssistant.js
