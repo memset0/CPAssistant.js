@@ -1,0 +1,1 @@
+export type Dict<V> = { [key: string]: V }
