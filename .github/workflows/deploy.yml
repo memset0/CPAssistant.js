@@ -6,14 +6,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install Dependence
-        run: npm install
+        run: yarn
       - name: Build
-        run: mkdir dist && npm run build
+        run: yarn build
       - name: Deploy Artifacts
         uses: actions/upload-artifact@v1
         with:
           name: "oi-helper-${{ github.sha }}"
-          path: dist/userscript.js
+          path: dist/CPAssistant.user.js
       - name: Deploy Github Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -22,4 +22,4 @@ jobs:
           publish_branch: dist
           force_orphan: true
       - name: Reflash Jsdelivr CDN Cache
-        run: curl https://purge.jsdelivr.net/gh/memset0/oi-helper@dist/userscript.js
+        run: curl https://purge.jsdelivr.net/gh/memset0/CPAssistant.js@dist/CPAssistant.user.js
