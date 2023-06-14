@@ -1,0 +1,148 @@
+.table {
+	.oi-shadow-2();
+	background: white;
+	font-size: 13.5px !important;
+	line-height: 20px !important;
+	border-spacing: 0px !important;
+
+	td,
+	tr,
+	th {
+		.oi-clean-border();
+	}
+
+	th {
+		padding: 8px 4px !important;
+	}
+
+	td {
+		padding: 6px 4px !important;
+	}
+
+	tr th:first-child,
+	tr td:first-child {
+		padding-left: 6px !important;
+	}
+
+	tr th:last-child,
+	tr td:last-child {
+		padding-right: 6px !important;
+	}
+}
+
+.table-striped {
+	tbody tr:nth-of-type(odd) {
+		background: rgba(0, 0, 0, 0.05);
+	}
+}
+
+#contest-problems {
+	th {
+		padding-top: 16px !important;
+		padding-bottom: 16px !important;
+	}
+
+	td {
+		padding-top: 8px !important;
+		padding-bottom: 8px !important;
+	}
+}
+
+#contest-rank-table {
+	.oi-clean-border();
+	.oi-shadow-2();
+	.oi-default-font();
+	background: white;
+	font-size: 13.5px !important;
+	line-height: 20px !important;
+	width: 100% !important;
+	overflow: scroll;
+	
+	tr th.prob div, tr td.prob div {
+		min-width: 20px !important;
+	}
+	
+	tr,
+	td,
+	tr.this.myself a {
+		font-weight: normal !important;
+	}
+
+	tr.this.myself a,
+	tr.this.myself td.meta {
+		color: #373a3c !important;
+	}
+
+	tr.this.myself td.meta {
+		background: #CFD8DC !important;
+	}
+
+	td.prob.fb {
+		background: #388E3C !important;
+	}
+
+	th.prob,
+	td.prob {
+		width: auto !important;
+		min-width: 80px !important;
+
+		div {
+			width: auto !important;
+			min-width: 80px !important;
+		}
+	}
+}
+
+#listUser_wrapper,
+#listStatus_wrapper,
+#listContest_wrapper,
+#listProblem_wrapper,
+#listComment_wrapper,
+#contest_status {
+	&>div:nth-child(1) {
+		height: 36px;
+	}
+
+	#buttonContainer,
+	#buttonContainer_l,
+	#buttonContainer_r {
+		.oi-clean-padding();
+		.oi-clean-margin();
+		.oi-shadow-2();
+	}
+
+	#buttonContainer,
+	#buttonContainer_l {
+		margin-left: 16px !important;
+	}
+
+	#buttonContainer,
+	#buttonContainer_r {
+		line-height: inherit;
+
+		.btn {
+			.oi-button-group .oi-button();
+		}
+	}
+
+	#listUser,
+	#listStatus,
+	#listContest,
+	#listProblem,
+	#listComment {
+		margin-top: 16px !important;
+	}
+}
+
+
+#listContest th,
+#listContest td {
+	&.contestants {
+		width: 40px !important;
+	}
+}
+
+#probRecords {
+	font-size: 12px !important;
+	line-height: 19px !important;
+}
