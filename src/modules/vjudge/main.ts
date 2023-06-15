@@ -1,3 +1,4 @@
+import config from '../../config'
 import Module from "../../types/module"
 import CustomStyle from "./features/CustomStyle"
 import AcceptedCounter from "./features/AcceptedCounter"

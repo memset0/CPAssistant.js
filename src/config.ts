@@ -1,15 +1,22 @@
-import { app } from './app'
 import { Dict } from './utils/type'
 
-const config: Dict<any> = {}
+const config: Dict<any> = {
+	match: {
+		vjudge: [
+			'vjudge.net',
+			'cn.vjudge.net',
+			'vjudge.z180.cn',
+		],
+	},
+}
 
-config.match = []
-for (const module of app.modules) {
-	for (const domain of module.match) {
-		config.match.push(`http://${domain}`)
-		config.match.push(`http://${domain}/*`)
-		config.match.push(`https://${domain}`)
-		config.match.push(`https://${domain}/*`)
+config.matches = []
+for (const module in config.match) {
+	for (const domain of config.match[module]) {
+		config.matches.push(`http://${domain}`)
+		config.matches.push(`https://${domain}`)
+		config.matches.push(`http://${domain}/*`)
+		config.matches.push(`https://${domain}/*`)
 	}
 }
 
