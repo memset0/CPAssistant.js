@@ -2,78 +2,80 @@
 
 @navbar-height: 64px;
 
-html, body, table.table {
-	.oi-default-font();
+html,
+body,
+table.table {
+  .oi-default-font();
 }
 
 body {
-	margin: 0;
-	background: #EFEFEF !important;
+  margin: 0;
+  background: #efefef !important;
 
-	&>.container,
-	&>.container-fluid {
-		margin-top: @navbar-height ;
-	}
+  & > .container,
+  & > .container-fluid {
+    margin-top: @navbar-height;
+  }
 
-	&>._oi_modified_container {
-		margin-top: @navbar-height + 30px !important;
-	}
+  & > ._oi_modified_container {
+    margin-top: @navbar-height + 30px !important;
+  }
 
-	&>#description-container.container {
-		margin-top: 0;
-	}
+  & > #description-container.container {
+    margin-top: 0;
+  }
 }
 
 .navbar {
-	.oi-clean-radius();
-	.oi-shadow-8();
-	position: fixed;
-	width: 100%;
-	left: 0;
-	top: 0;
-	height: @navbar-height;
-	line-height: @navbar-height;
-	padding-top: 0;
-	padding-bottom: 0;
-	z-index: 1000;
+  .oi-clean-radius();
+  .oi-shadow-8();
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: @navbar-height;
+  line-height: @navbar-height;
+  padding-top: 0;
+  padding-bottom: 0;
+  z-index: 1000;
 
-	.nav-link,
-	.navbar-brand {
-		padding-top: 0;
-		padding-bottom: 0;
-	}
+  .nav-link,
+  .navbar-brand {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 }
 
 .card {
-	.oi-shadow-2();
-	.oi-clean-border();
-	.oi-clean-radius();
+  .oi-shadow-2();
+  .oi-clean-border();
+  .oi-clean-radius();
 }
 
 .list-group {
-	.oi-clean-border();
-	.oi-clean-radius();
-	.oi-clean-link-underline();
-	.oi-shadow-2();
+  .oi-clean-border();
+  .oi-clean-radius();
+  .oi-clean-link-underline();
+  .oi-shadow-2();
 
-	.list-group-item {
-		.oi-clean-border();
-		.oi-clean-radius();
-	}
+  .list-group-item {
+    .oi-clean-border();
+    .oi-clean-radius();
+  }
 }
 
 .custom-select,
 .form-control {
-	.oi-clean-border();
-	.oi-clean-radius();
-	.oi-shadow-2();
+  .oi-clean-border();
+  .oi-clean-radius();
+  .oi-shadow-2();
 }
 
 #img_go_top,
 #img-support,
 .fb-like.fb_iframe_widget,
-.body-footer>div:nth-child(1) {
-	display: none;
+.body-footer > div:nth-child(1) {
+  display: none;
 }
 
 @import './module/table.less';

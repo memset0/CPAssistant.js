@@ -8,11 +8,7 @@ export default class ModuleVjudge extends Module {
 	}
 
 	constructor() {
-		super('vjudge', [
-			'vjudge.net',
-			'cn.vjudge.net',
-			'vjudge.z180.cn',
-		])
+		super('vjudge', config.match.vjudge)
 
 		this.register(new CustomStyle(this, 'custom-style'))
 		this.register(new AcceptedCounter(this, 'accepted-counter'))
