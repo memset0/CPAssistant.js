@@ -2,6 +2,14 @@ import { Dict } from './utils/type'
 
 const config: Dict<any> = {
 	match: {
+		codeforces: [
+			'codeforces.com',
+			'codeforc.es',
+		],
+		qoj: [
+			'qoj.ac',
+			'pjudge.ac',
+		],
 		vjudge: [
 			'vjudge.net',
 			'cn.vjudge.net',

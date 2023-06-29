@@ -1,3 +1,3 @@
-import { app } from './app'
+import { app } from './app';
 
-app.apply(location)
+app.apply();

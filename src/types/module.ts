@@ -1,17 +1,23 @@
+import App from '../app';
 import Feature from './feature';
-
+import { PlainFunction } from '../utils/type';
 
 export default class Module {
+	app: App
 	name: string
 	match: Array<string>
 	features: Array<Feature>
+	plugins: Array<PlainFunction>
 
 	run() { }
 
-	apply(location: Location) {
+	apply() {
 		this.run()
 		for (const feature of this.features) {
-			feature.apply(location)
+			feature.apply()
+		}
+		for (const pluginFunction of this.plugins) {
+			pluginFunction()
 		}
 	}
 
@@ -19,9 +25,11 @@ export default class Module {
 		this.features.push(feature)
 	}
 
-	constructor(name: string, match: Array<string>) {
+	constructor(app: App, name: string, match: Array<string>) {
+		this.app = app
 		this.name = name
 		this.match = match
 		this.features = []
+		this.plugins = []
 	}
 }

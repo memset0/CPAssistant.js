@@ -1,18 +1,33 @@
+import App from '../app';
 import Module from './module';
+import { Dict } from '../utils/type';
 
 export default class Feature {
+	app: App
 	module: Module
 	name: string
-	location: Location
 
 	run() { }
 
-	apply(location: Location) {
-		this.location = location
-		this.run()
+	apply() {
+		this.run();
 	}
 
-	on(match: string | Array<string>, func: (args: any) => void): boolean {
+	plugin(moduleName: string, func: () => void) {
+		console.log('[module.plugin]', moduleName, this.name, 'actived?', moduleName in this.app.modules);
+		if (moduleName in this.app.modules) {
+			const module = this.app.modules[moduleName];
+			const virtualFeature = new Feature(module, `${this.module.name}::${this.name}`);
+			func.call(virtualFeature);
+		} else {
+			if (!(moduleName in this.app._queuedPlugins)) {
+				this.app._queuedPlugins[moduleName] = [];
+			}
+			this.app._queuedPlugins[moduleName].push({ feature: this, func });
+		}
+	}
+
+	on(match: string | Array<string>, func: (args: Dict<string>) => void): boolean {
 		if (match instanceof Array) {
 			let ok = false
 			for (const singleMatch of match) {
@@ -24,9 +39,9 @@ export default class Feature {
 			return false
 		}
 
-		const args = {}
+		const args: Dict<string> = {}
 		const matchParts = match.slice(1).split('/')
-		const pathParts = this.location.pathname.slice(1).split('/')
+		const pathParts = location.pathname.slice(1).split('/')
 
 		if (pathParts.length < matchParts.length) {
 			return false
@@ -37,7 +52,7 @@ export default class Feature {
 				break
 			} else if (matchParts[i].startsWith('<') && matchParts[i].endsWith('>')) {
 				const key = matchParts[i].slice(1, matchParts[i].length - 1)
-				args[key] = pathParts
+				args[key] = pathParts[i]
 			} else {
 				if (matchParts[i] != pathParts[i]) {
 					return false
@@ -50,6 +65,8 @@ export default class Feature {
 	}
 
 	constructor(module: Module, name: string) {
-
+		this.app = module.app;
+		this.module = module;
+		this.name = name;
 	}
 }

@@ -1,26 +1,40 @@
+import { Dict } from './utils/type';
 import Module from './types/module';
+import Feature from './types/feature';
 import ModuleVjudge from './modules/vjudge/main';
+import ModuleCodeforces from './modules/codeforces/main';
 
 export default class App {
-	modules: Array<Module>
+	modules: Dict<Module>
+	_queuedPlugins: Dict<Array<{ feature: Feature, func: () => void }>>
 
-	apply(location: Location) {
-		for (const module of this.modules) {
+	apply() {
+		for (const name in this.modules) {
+			const module = this.modules[name];
 			if (module.match.includes(location.host)) {
-				module.apply(location)
-				break
+				module.apply();
+				break;
 			}
 		}
 	}
 
 	register(module: Module) {
-		this.modules.push(module)
+		this.modules[module.name] = module;
+		if (module.name in this._queuedPlugins) {
+			for (const queuedPlugin of this._queuedPlugins[module.name]) {
+				const { feature, func } = queuedPlugin;
+				feature.plugin(module.name, func);
+			}
+		}
 	}
 
 	constructor() {
-		this.modules = []
+		this._queuedPlugins = {};
+
+		this.modules = {};
 	}
 }
 
 export const app = new App();
-app.register(new ModuleVjudge());
+app.register(new ModuleVjudge(app));
+app.register(new ModuleCodeforces(app));
