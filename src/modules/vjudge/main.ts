@@ -12,5 +12,6 @@ export default class ModuleVjudge extends Module {
 		super(app, 'vjudge', config.match.vjudge)
 
 		this.register(new AcceptedCounter(this, 'accepted-counter'))
+		this.register(new ForkContest(this, 'fork-contest'))
 	}
 }
