@@ -9,6 +9,10 @@ export default class Module {
 	features: Array<Feature>
 	plugins: Array<PlainFunction>
 
+	log(...args: any[]) {
+		return this.app.log(`[${this.name}]`, ...args);
+	}
+
 	run() { }
 
 	apply() {

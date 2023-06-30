@@ -7,6 +7,10 @@ export default class Feature {
 	module: Module
 	name: string
 
+	log(...args: any[]) {
+		return this.module.log(`[${this.name}]`, ...args);
+	}
+
 	run() { }
 
 	apply() {
