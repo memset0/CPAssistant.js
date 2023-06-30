@@ -18,11 +18,11 @@ export default class Feature {
 	}
 
 	plugin(moduleName: string, func: () => void) {
-		console.log('[module.plugin]', moduleName, this.name, 'actived?', moduleName in this.app.modules);
 		if (moduleName in this.app.modules) {
 			const module = this.app.modules[moduleName];
 			const virtualFeature = new Feature(module, `${this.module.name}::${this.name}`);
-			func.call(virtualFeature);
+			virtualFeature.run = () => { func.call(virtualFeature); };
+			module.register(virtualFeature);
 		} else {
 			if (!(moduleName in this.app._queuedPlugins)) {
 				this.app._queuedPlugins[moduleName] = [];
