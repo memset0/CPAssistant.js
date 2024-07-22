@@ -33,7 +33,7 @@ export default class Feature {
     }
   }
 
-  on(match: string | Array<string>, func: (args: Dict<string>) => void): boolean {
+  on(match: string | Array<string>, func: (args: Dict<string>, params: Dict<string>) => void): boolean {
     if (match instanceof Array) {
       let ok = false;
       for (const singleMatch of match) {
@@ -75,7 +75,7 @@ export default class Feature {
       }
     }
 
-    func(args);
+    func(args, Object.fromEntries(new URLSearchParams(location.search)));
     return true;
   }
 

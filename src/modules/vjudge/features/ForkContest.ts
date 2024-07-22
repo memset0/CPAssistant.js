@@ -61,8 +61,6 @@ export default class ForkContest extends Feature {
     }
 
     this.plugin('codeforces', function (this: Feature) {
-      this.log('setup');
-
       function setup(situation: string, roundId: string) {
         const $menu = document.getElementsByClassName('second-level-menu')[0];
         const $menuList = $menu.children[0];

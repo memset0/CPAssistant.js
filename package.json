@@ -20,8 +20,10 @@
   "homepage": "https://github.com/memset0/CPAssistant.js#readme",
   "dependencies": {
     "@types/node": "^20.3.0",
+    "file-saver": "^2.0.5",
     "h": "^1.0.0",
     "less": "^4.1.3",
+    "papaparse": "^5.4.1",
     "query-string": "^8.1.0",
     "typescript": "^5.1.3",
     "vite": "^4.3.9",
