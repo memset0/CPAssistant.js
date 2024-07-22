@@ -53,7 +53,10 @@ export default class Feature {
 			--pathParts.length;
 		}
 
-		if (pathParts.length != matchParts.length) {
+		if (pathParts.length < matchParts.length) {
+			return false
+		}
+		if (pathParts.length > matchParts.length && matchParts[matchParts.length - 1] !== '*') {
 			return false
 		}
 
