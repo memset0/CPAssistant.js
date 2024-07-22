@@ -1,12 +1,11 @@
-import config from '../../config'
-import App from '../../app'
-import Module from "../../types/module"
+import config from '../../config';
+import App from '../../app';
+import Module from '../../types/module';
 
 export default class ModuleCodeforces extends Module {
-	run() {
-	}
+  run() {}
 
-	constructor(app: App) {
-		super(app, 'codeforces', config.match.codeforces)
-	}
+  constructor(app: App) {
+    super(app, 'codeforces', config.match.codeforces);
+  }
 }
