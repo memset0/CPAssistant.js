@@ -6,6 +6,9 @@ const config: Dict<any> = {
 			'codeforces.com',
 			'codeforc.es',
 		],
+		hdu: [
+			'acm.hdu.edu.cn',
+		],
 		qoj: [
 			'qoj.ac',
 			'pjudge.ac',
