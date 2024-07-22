@@ -92,6 +92,30 @@ export default class ForkContest extends Feature {
 			this.on('/gym/<id>', (args) => { setup('gym', args.id); })
 			this.on('/contest/<id>', (args) => { setup('contest', args.id); })
 		});
+
+		this.plugin('qoj', function (this: Feature) {
+			this.on('/contest/<id>', () => {
+				const $nav = document.getElementsByClassName('nav-tabs')[0];
+				$nav.appendChild(htmlToElement(`<li class="nav-item"><a href="#" class="nav-link" id="cpa-copy-pid">Copy Problem IDs (VJ)</a></li>`));
+				$nav.appendChild(htmlToElement(`<li class="nav-item"><a href="#" class="nav-link" id="cpa-fork-contest">Fork Contest (VJ)</a></li>`));
+
+				function getProblems(): Array<VjudgeProblem> {
+					const problems: Array<VjudgeProblem> = [];
+					for (const $problemLink of document.querySelectorAll('.table-responsive')[0].querySelectorAll('table>tbody a')) {
+						const href = $problemLink.attributes.getNamedItem('href')!.value;
+						const id = href.split('/').at(-1)!;
+						problems.push({ oj: 'QOJ', id });
+					}
+					return problems;
+				}
+				function getContestTitle(): string {
+					return document.querySelector('.uoj-content .text-center h1')!.innerHTML.trim();
+				}
+
+				document.getElementById('cpa-copy-pid')!.onclick = async () => copyPid(getProblems());
+				document.getElementById('cpa-fork-contest')!.onclick = async () => forkContest(getProblems(), getContestTitle());
+			});
+		});
 	}
 
 	constructor(module: Module, name: string) {

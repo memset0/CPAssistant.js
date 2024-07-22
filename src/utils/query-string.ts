@@ -31,7 +31,7 @@ export function generateQueryString(records: Dict<string>): string {
 export function parseCPAData(query: string): any {
 	const records = parseQueryString(query);
 	if (!records.cpa) { return null; }
-	const json = atob(records.cpa);
+	const json = decodeURI(atob(records.cpa));
 	let data: any = null;
 	try {
 		data = JSON.parse(json);
@@ -44,5 +44,5 @@ export function parseCPAData(query: string): any {
 
 export function generateCPAData(data: any): string {
 	const json = JSON.stringify(data);
-	return generateQueryString({ cpa: btoa(json) });
+	return generateQueryString({ cpa: btoa(encodeURI(json)) });
 }

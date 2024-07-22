@@ -2,6 +2,7 @@ import { Dict } from './utils/type';
 import Module from './types/module';
 import Feature from './types/feature';
 import ModuleVjudge from './modules/vjudge/main';
+import ModuleQOJ from './modules/qoj/main';
 import ModuleCodeforces from './modules/codeforces/main';
 
 export default class App {
@@ -42,3 +43,4 @@ export default class App {
 export const app = new App();
 app.register(new ModuleVjudge(app));
 app.register(new ModuleCodeforces(app));
+app.register(new ModuleQOJ(app));
