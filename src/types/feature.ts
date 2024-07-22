@@ -46,8 +46,14 @@ export default class Feature {
 		const args: Dict<string> = {}
 		const matchParts = match.slice(1).split('/')
 		const pathParts = location.pathname.slice(1).split('/')
+		if (matchParts[matchParts.length - 1] == '') {
+			--matchParts.length;
+		}
+		if (pathParts[pathParts.length - 1] == '') {
+			--pathParts.length;
+		}
 
-		if (pathParts.length < matchParts.length) {
+		if (pathParts.length != matchParts.length) {
 			return false
 		}
 

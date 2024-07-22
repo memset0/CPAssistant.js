@@ -5,8 +5,8 @@ import ModuleVjudge from './modules/vjudge/main';
 import ModuleCodeforces from './modules/codeforces/main';
 
 export default class App {
-	modules: Dict<Module>
-	_queuedPlugins: Dict<Array<{ feature: Feature, func: () => void }>>
+	modules: Dict<Module>;
+	_queuedPlugins: Dict<Array<{ feature: Feature; func: () => void }>>;
 
 	log(...args: any[]) {
 		return console.log('[CPAssistant.js]', ...args);

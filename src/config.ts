@@ -12,6 +12,7 @@ const config: Dict<any> = {
 		],
 		vjudge: [
 			'vjudge.net',
+			'vjudge.net.cn',
 			'cn.vjudge.net',
 			'vjudge.z180.cn',
 		],
