@@ -1,6 +1,7 @@
 {
 	"[typescript]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
-		"editor.formatOnType": true
+		"editor.formatOnType": true,
+		"editor.formatOnSave": true
 	},
 }
