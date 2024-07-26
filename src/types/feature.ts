@@ -33,10 +33,10 @@ export default class Feature {
     }
   }
 
-  on(match: string | Array<string>, func: (args: Dict<string>, params: Dict<string>) => void): boolean {
-    if (match instanceof Array) {
+  on(matcher: string | Array<string>, func: (args: Dict<string>, params: Dict<string>) => void): boolean {
+    if (matcher instanceof Array) {
       let ok = false;
-      for (const singleMatch of match) {
+      for (const singleMatch of matcher) {
         ok = this.on(singleMatch, func);
         if (ok) {
           return ok;
@@ -46,30 +46,31 @@ export default class Feature {
     }
 
     const args: Dict<string> = {};
-    const matchParts = match.slice(1).split('/');
-    const pathParts = location.pathname.slice(1).split('/');
-    if (matchParts[matchParts.length - 1] == '') {
-      --matchParts.length;
+    const matcherParts = matcher.slice(1).split('/');
+    const currentPaths = location.pathname.slice(1).split('/');
+
+    if (matcherParts[matcherParts.length - 1] == '') {
+      --matcherParts.length;
     }
-    if (pathParts[pathParts.length - 1] == '') {
-      --pathParts.length;
+    if (currentPaths[currentPaths.length - 1] == '') {
+      --currentPaths.length;
     }
 
-    if (pathParts.length < matchParts.length) {
+    if (currentPaths.length < matcherParts.length) {
       return false;
     }
-    if (pathParts.length > matchParts.length && matchParts[matchParts.length - 1] !== '*') {
+    if (currentPaths.length > matcherParts.length && matcherParts[matcherParts.length - 1] !== '*') {
       return false;
     }
 
-    for (let i = 0; i < matchParts.length; i++) {
-      if (matchParts[i] === '*') {
+    for (let i = 0; i < matcherParts.length; i++) {
+      if (matcherParts[i] === '*') {
         break;
-      } else if (matchParts[i].startsWith('<') && matchParts[i].endsWith('>')) {
-        const key = matchParts[i].slice(1, matchParts[i].length - 1);
-        args[key] = pathParts[i];
+      } else if (matcherParts[i].startsWith('<') && matcherParts[i].endsWith('>')) {
+        const key = matcherParts[i].slice(1, matcherParts[i].length - 1);
+        args[key] = currentPaths[i];
       } else {
-        if (matchParts[i] != pathParts[i]) {
+        if (matcherParts[i] != currentPaths[i]) {
           return false;
         }
       }
