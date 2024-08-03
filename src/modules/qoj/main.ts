@@ -1,7 +1,7 @@
 import config from '../../config';
 import App from '../../app';
 import Module from '../../types/module';
-import RanklistExport from './features/RanklistExport_';
+import RanklistExport from './features/RanklistExport';
 
 export default class ModuleQOJ extends Module {
   run() {}
