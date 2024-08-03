@@ -1,7 +1,7 @@
 import config from '../../config';
 import App from '../../app';
 import Module from '../../types/module';
-import RankListExport from './features/RanklistExport';
+import RanklistExport from './features/RanklistExport_';
 
 export default class ModuleQOJ extends Module {
   run() {}
@@ -9,6 +9,6 @@ export default class ModuleQOJ extends Module {
   constructor(app: App) {
     super(app, 'qoj', config.match.qoj);
 
-    this.register(new RankListExport(this, 'ranklist-export'));
+    this.register(new RanklistExport(this, 'ranklist-export'));
   }
 }
